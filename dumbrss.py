@@ -160,7 +160,7 @@ def feedview(folder_id = None, feed_id = None):
         page = int(flask.request.args.get("p") or 1)
     except ValueError:
         page = 1
-    entries = entries.paginate(page, 30)
+    entries = entries.paginate(page = page, max_per_page = 30)
 
     addfeedform = AddFeedForm()
 

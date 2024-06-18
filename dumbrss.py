@@ -7,7 +7,7 @@ import urllib.parse as urlparse
 import urllib.request as urlrequest
 
 import flask
-import flask_script
+#import flask_script
 import flask_sqlalchemy
 import flask_wtf
 
@@ -36,7 +36,7 @@ if app.config["SECRET_KEY"] is None:
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = flask_sqlalchemy.SQLAlchemy(app)
-manager = flask_script.Manager(app)
+#manager = flask_script.Manager(app)
 
 # Set the timezone to UTC for consistent time stamps
 os.environ["TZ"] = "UTC"
@@ -210,7 +210,7 @@ def api_fetch():
     db.session.commit()
     return "ok"
 
-@manager.option("-f", "--feed", dest = "id", default = None)
+#@manager.option("-f", "--feed", dest = "id", default = None)
 def fetch(id):
     "Fetch feed updates"
     if id is None:
@@ -229,11 +229,11 @@ def fetch(id):
         except AttributeError:
             print("No feed with ID", id)
 
-@manager.command
+#@manager.command
 def initdb():
     "Initialize the database"
     db.create_all()
 
-if __name__ == "__main__":
-    manager.run()
+#if __name__ == "__main__":
+#    manager.run()
 
